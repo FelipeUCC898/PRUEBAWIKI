@@ -1,0 +1,191 @@
+{% extends "layouts/layout.html" %}
+{% block content %}
+<section>
+    <h2>Artículos</h2>
+
+    {% if articles %}
+        <div class="articles-container">
+            {% for article in articles %}
+                <div class="article">
+                    <h3>{{ article.title }}</h3>
+                    
+                    <img class="article-image" src="{{ article.image.url }}" alt="{{ article.title }}">
+                    <div class="article-content">{{ article.content|safe }}</div>
+                    <p class="article-date">Fecha: {{ article.date }}</p>
+                    <p class="article-categories">
+                        Categorías: 
+                        {% for cat in article.categori.all %}
+                            {{ cat.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+
+                    <!-- Botones de interacción -->
+                    <div class="interaction-buttons">
+                        <button class="like-button" title="Me gusta">
+                            <span class="like-icon">👍</span> Me gusta
+                            
+                        </button>
+                        <button class="comment-button" title="Comentario">
+                            <span class="comment-icon">💬</span> Comentar
+                        </button>
+                        <button class="share-button" title="Compartir">
+                            <span class="share-icon">🔗</span> Compartir
+                        </button>
+                        <button class="favorite-button" title="Favorito">
+                            <span class="favorite-icon">⭐</span> Favorito
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No hay artículos disponibles.</p>
+    {% endif %}
+</section>
+
+<style>
+    /* Estilo general de la página */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Contenedor de los artículos */
+    .articles-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        align-items: center;
+    }
+    
+    /* Estilo individual de cada artículo */
+    .article {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        transition: all 0.3s ease;
+        width: 100%;
+        max-width: 600px; /* Reducido el max-width de los artículos */
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 0 auto;
+    }
+    
+    /* Hover del artículo */
+    .article:hover {
+        transform: translateY(-5px);
+    }
+    
+    /* Título centrado del artículo */
+    .article h3 {
+        font-size: 1.5em; /* Reducido tamaño del título */
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    /* Estilo de la imagen centrada */
+    .article-image {
+        width: 100%;
+        max-width: 500px; /* Reducido el tamaño máximo de la imagen */
+        height: auto;
+        border-radius: 8px;
+        margin: 0 auto;
+        object-fit: cover;
+    }
+    
+    /* Estilo del contenido del artículo */
+    .article-content {
+        margin-bottom: 10px;
+        font-size: 1.1em; /* Reducido tamaño de fuente */
+        line-height: 1.5;
+        text-align: justify;
+    }
+    
+    /* Estilo de la fecha y categorías */
+    .article-date,
+    .article-categories {
+        font-size: 0.9em; /* Reducido el tamaño de la fuente */
+        color: #888;
+        text-align: center;
+    }
+    
+    .article-date {
+        margin-bottom: 10px;
+    }
+    
+    /* Estilo de los botones de interacción */
+    .interaction-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px; /* Reducido espacio entre los botones */
+        margin-top: 10px; /* Reducido espacio superior */
+    }
+    
+    .interaction-buttons button {
+        background-color: #f0f2f5;
+        color: #4267B2;
+        border: none;
+        padding: 8px 15px; /* Reducido padding de los botones */
+        font-size: 1em; /* Reducido tamaño de los botones */
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .interaction-buttons button:hover {
+        background-color: #e4e6eb;
+    }
+    
+    .like-button {
+        color: #4267B2;
+    }
+    
+    .comment-button {
+        color: #34b7f1;
+    }
+    
+    .share-button {
+        color: #55acee;
+    }
+    
+    .favorite-button {
+        color: #f7b731;
+    }
+    
+    .like-icon, .comment-icon, .share-icon, .favorite-icon {
+        font-size: 1.2em; /* Reducido tamaño de los íconos */
+    }
+    
+    /* Responsividad */
+    @media (max-width: 768px) {
+        .article {
+            padding: 15px;
+            max-width: 90%;
+        }
+    
+        .article h3 {
+            font-size: 1.3em;
+        }
+    
+        .article-image {
+            max-width: 100%;
+        }
+    
+        .interaction-buttons {
+            gap: 8px; /* Reducido espacio en móviles */
+        }
+    }
+</style>
+
+{% endblock content %}

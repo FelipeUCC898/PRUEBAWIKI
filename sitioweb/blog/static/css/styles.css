@@ -1,0 +1,85 @@
+/* Contenedor principal de los artículos */
+.articles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Cada artículo */
+.article {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.article:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Título del artículo */
+.article h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+/* Imagen del artículo */
+.article img {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    margin: 10px 0;
+}
+
+/* Contenido del artículo */
+.article div {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Fecha y categorías */
+.article p {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.article p a {
+    color: #1d72b8;
+    text-decoration: none;
+}
+
+.article p a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo del botón de "Me gusta" */
+.like-button {
+    display: flex;
+    align-items: center;
+    background-color: #e4e6eb;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #1877f2;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.like-button:hover {
+    background-color: #dfe3ea;
+}
