@@ -9,7 +9,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV "/Users/matheuruales/proyecto/xd/carpeta sin título/djangocxd/sitioweb/venv"
+setenv VIRTUAL_ENV "/Users/matheuruales/proyecto/xd/PRUEBAWIKI/djangocxd/sitioweb/venv"
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/bin:$PATH"
